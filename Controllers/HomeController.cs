@@ -28,13 +28,15 @@ namespace MVCLancashire.Controllers
             return View();
         }
 
-        public ActionResult ViewCustomer() {
-            Customer customer = new Customer();
+        //public ActionResult ViewCustomer(string Name, string Telephone) {
+        public ActionResult ViewCustomer(Customer postedCustomer) {
+          Customer customer = new Customer();
             //guid is random unique number computer generates useful in dbs
             customer.Id = Guid.NewGuid().ToString();
-            customer.Name = "Fred";
-            customer.Telephone = "01879843";
-
+            // customer.Name = Name;
+            customer.Name = postedCustomer.Name;
+           // customer.Telephone = Telephone;
+            customer.Telephone = postedCustomer.Telephone;
             return View(customer);
 
         }
@@ -42,6 +44,16 @@ namespace MVCLancashire.Controllers
         public ActionResult AddCustomer() {
             return View();
 
+        }
+
+        public ActionResult CustomerList() {
+
+            List<Customer> customers = new List<Customer>();
+
+            customers.Add(new Customer() { Name = "Fred", Telephone="12345"   });
+            customers.Add(new Customer() { Name = "Blobby", Telephone = "000004" });
+            return View(customers);
+          
         }
     }
 }

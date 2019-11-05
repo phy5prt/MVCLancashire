@@ -12,4 +12,5 @@ namespace MVCLancashire.Models
         public string Name { get; set; }
         public string Telephone { get; set; }
     }
+
 }

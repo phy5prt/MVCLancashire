@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Caching;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MVCLancashire.Controllers
@@ -25,7 +24,14 @@ namespace MVCLancashire.Controllers
             cache["customers"] = customers;
         }
 
+        public PartialViewResult Basket() {
 
+            BasketViewModel model = new BasketViewModel();
+            model.BasketCount = 5;
+            model.BasketTotal = "$100";
+
+            return PartialView(model);
+        }
         public ActionResult Index()
         {
             return View();
